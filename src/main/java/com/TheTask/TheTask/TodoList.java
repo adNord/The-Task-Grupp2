@@ -12,7 +12,7 @@ public class TodoList {
         return;
     }
 
-    public void removeTask(String id){
+    public void removeTask(String title){
         return;
     }
 
