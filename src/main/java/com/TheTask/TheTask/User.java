@@ -8,6 +8,14 @@ public class User {
     String id;
     List<TodoList> userOwnedLists = new ArrayList<>();
 
+    public User(String userName){
+        this.userName = userName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
     public void addList(TodoList todoList){
         return;
     }
