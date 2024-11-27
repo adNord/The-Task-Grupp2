@@ -9,6 +9,10 @@ public class UserManager {
     //currentUser är en 'user's id.
     private String currentUser;
 
+    public UserManager(String currentUser) {
+        this.currentUser = currentUser;
+    }
+
     public String getCurrentUser() {
         return currentUser;
     }

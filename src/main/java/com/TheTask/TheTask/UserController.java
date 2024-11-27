@@ -20,10 +20,12 @@ public class UserController {
         return "create_user";
     }
     
+    public List<User> users = new ArrayList<>();
+
 
     @PostMapping("/newUser")
     public String newUser(@RequestParam("name") String name){
-
+        users.add(new User(name));
         return "redirect:/create_user";
     }
     
