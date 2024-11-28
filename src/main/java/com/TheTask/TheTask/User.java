@@ -15,13 +15,14 @@ public class User {
     }
 
     public void addList(TodoList todoList){
+        userOwnedLists.add(todoList);
         return;
     }
 
     public String getUserName() {
         return userName;
     }
-
+    
     public UUID getId() {
         return id;
     }
