@@ -38,9 +38,14 @@
         </ul>
       </nav>
       <hr>
-    </header>
+    </header> 
 
-    <button>Lägg till ny lista</button>
+    <!-- id="todoListTitle" name="todoListTitle" -->
+
+    <form method="post" th:action="@{/addToDoList}">
+      <input type="text" id="todoListName" name="todoListTitle" >
+      <button>Lägg till ny lista</button>
+    </form>
 
   </body>
 </html>

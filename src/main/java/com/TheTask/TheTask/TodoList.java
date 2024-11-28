@@ -8,6 +8,10 @@ public class TodoList {
     //String description;
     List<Task> tasks = new ArrayList<>();
 
+    public TodoList(String title){
+        this.title = title;
+    }
+
     public void addTask(Task task){
         return;
     }
@@ -16,4 +20,5 @@ public class TodoList {
         return;
     }
 
+    
 }

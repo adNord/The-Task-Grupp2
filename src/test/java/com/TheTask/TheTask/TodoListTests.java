@@ -10,7 +10,7 @@ public class TodoListTests {
 
     @Test
     public void addTaskTest(){
-        TodoList todoList = new TodoList();
+        TodoList todoList = new TodoList("title");
         assertEquals(0, todoList.tasks.size());
 
         Task task = new Task("title", LocalDate.now());
@@ -19,7 +19,7 @@ public class TodoListTests {
     }
 
     public void removeTaskTest(){
-        TodoList todoList = new TodoList();
+        TodoList todoList = new TodoList("title");
         Task task = new Task("title", LocalDate.now());
         todoList.addTask(task);
         assertEquals(1, todoList.tasks.size());
