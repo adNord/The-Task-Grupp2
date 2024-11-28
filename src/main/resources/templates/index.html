@@ -4,23 +4,40 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TheTaskGroup2</title>
+    <!-- Todo flytta till separat css fil -->
+    <style>
+      nav ul {
+        list-style-type: none;
+        padding: 0;
+      }
+    
+      nav ul li {
+        display: inline-block;
+      }
+    </style>
   </head>
   <body>
     <header>
       <h1>TheTaskGroup2</h1>
       <nav>
         <ul>
-          <li><a href="">Användarlista</a></li>
+          <li>
+            <a th:if="${currentUser == null}" href="">Ingen aktuell användare</a>
+            <a th:if="${currentUser != null}" th:href="@{/}" th:text="|${currentUser.userName}'s listor|"></a>
+          </li>
           <li><a th:href="@{/create_user}">Lägg till ny användare</a></li>
 
-          <p>Välj användare</p>
-          <select name="dropdown" id="">
-            <option value="alternativ1">Alternativ 1</option>
-            <option value="alternativ2">Alternativ 2</option>
-            <option value="alternativ3">Alternativ 3</option>
-          </select>
+          <li>
+              <form method="post" th:action="@{/selectUser}" id="userForm">
+                <select name="userId" id="userSelect" onchange="document.getElementById('userForm').submit()">
+                  <option selected disabled>Välj Användare</option>
+                  <option th:each="user : ${userManager.users}" th:value="${user.id}" th:text="${user.userName}"></option>
+                </select>
+              </form>
+          </li>
         </ul>
       </nav>
+      <hr>
     </header>
   </body>
 </html>
