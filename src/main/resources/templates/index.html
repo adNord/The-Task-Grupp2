@@ -47,5 +47,12 @@
       <button>Lägg till ny lista</button>
     </form>
 
+    <div>
+      <h2>To-Do Lists</h2>
+      <ul>
+        <li th:each="todoList : ${userOwnedLists}" th:text="${todoList.title}"></li>
+      </ul>
+    </div>
+
   </body>
 </html>
