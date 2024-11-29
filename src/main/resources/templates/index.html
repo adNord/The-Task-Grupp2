@@ -22,7 +22,7 @@
       <nav>
         <ul>
           <li>
-            <a th:if="${currentUser == null}" href="">Ingen aktuell användare</a>
+            <a th:if="${currentUser == null}" >Ingen aktuell användare</a>
             <a th:if="${currentUser != null}" th:href="@{/}" th:text="|${currentUser.userName}'s listor|"></a>
           </li>
           <li><a th:href="@{/create_user}">Lägg till ny användare</a></li>
@@ -46,6 +46,7 @@
       <input type="text" id="todoListName" name="todoListTitle" >
       <button>Lägg till ny lista</button>
     </form>
+    
 
     <div>
       <h2>To-Do Lists</h2>

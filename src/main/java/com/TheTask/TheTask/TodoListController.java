@@ -14,6 +14,11 @@ public class TodoListController {
     @PostMapping("/addToDoList")
     public String addTodoList(@RequestParam String todoListTitle, Model model){ //<-- Model model skicka data från controller till vyn
         User currentUser = userManager.getCurrentUser();
+        if (currentUser == null) {
+            model.addAttribute("errorMessage", "Ingen användare vald");
+            System.out.println("Måste välja användare först");
+        return "redirect:/";
+        } 
         TodoList newTodoList = new TodoList(todoListTitle);
         currentUser.addList(newTodoList);
         System.out.println("Antal listor för denna användare: " + currentUser.userOwnedLists.size());
