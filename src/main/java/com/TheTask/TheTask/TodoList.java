@@ -20,5 +20,9 @@ public class TodoList {
         return;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
     
 }

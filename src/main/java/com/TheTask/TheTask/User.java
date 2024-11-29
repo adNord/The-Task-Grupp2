@@ -26,4 +26,8 @@ public class User {
     public UUID getId() {
         return id;
     }
+
+    public List<TodoList> getUserOwnedLists(){
+        return userOwnedLists;
+    }
 }

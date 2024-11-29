@@ -12,7 +12,7 @@ public class TodoListController {
     private UserManager userManager;
 
     @PostMapping("/addToDoList")
-    public String addTodoList(@RequestParam String todoListTitle, Model model){
+    public String addTodoList(@RequestParam String todoListTitle, Model model){ //<-- Model model skicka data från controller till vyn
         User currentUser = userManager.getCurrentUser();
         if (currentUser == null) {
             model.addAttribute("errorMessage", "Ingen användare vald");
@@ -21,8 +21,11 @@ public class TodoListController {
         } 
         TodoList newTodoList = new TodoList(todoListTitle);
         currentUser.addList(newTodoList);
-       
-         System.out.println("Antal listor för denna användare: " + currentUser.userOwnedLists.size());
+        System.out.println("Antal listor för denna användare: " + currentUser.userOwnedLists.size());
+
+        // lägg till aktuella användaren och deras todolist i modellen
+        model.addAttribute("currnetUser", currentUser);
+        model.addAttribute("userOwnedLists", currentUser.getUserOwnedLists());
 
         return "redirect:/";
     }
