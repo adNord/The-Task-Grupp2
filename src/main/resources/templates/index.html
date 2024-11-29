@@ -46,13 +46,16 @@
       <input type="text" id="todoListName" name="todoListTitle" >
       <button>Lägg till ny lista</button>
     </form>
-    
 
-    <div>
-      <h2>To-Do Lists</h2>
+    <div th:each="todoList : ${userOwnedLists}">
+      <h3 th:text="${todoList.title}"></h3>
       <ul>
-        <li th:each="todoList : ${userOwnedLists}" th:text="${todoList.title}"></li>
+        <li>Test</li>
+        <li>Tasks</li>
+        <li>osv</li>
+        <li>:]</li>
       </ul>
+      <button>Lägg till Task</button>
     </div>
 
   </body>
