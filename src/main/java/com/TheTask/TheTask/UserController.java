@@ -38,15 +38,21 @@ public class UserController {
 
     @PostMapping("/newUser")
     public String newUser(@ModelAttribute User user, Model model){
-        userManager.users.add(user);
-        System.out.println("New user ID: " + user.id);
-        System.out.println("Number of users: " + userManager.users.size());
-        userManager.setCurrentUser(user.id);
-        System.out.println("Current user: " + userManager.getCurrentUser().getUserName());
-        // lägg till aktuella användaren och deras todolists 
-        model.addAttribute("currentUser", user); // lägger till aktuella användaren i modellen så den används i vyn 
-        model.addAttribute("userOwnedLists", user.getUserOwnedLists()); // lägger till den aktuella användarens todolist i modellen
-        return "redirect:/";
+        if (user.userName.isEmpty()) {
+            System.out.println("Du måste välja ett användarnamn");  // Nu händer ingenting i html om man inte skriver in namn. Behövs Javascript isf?
+            return "redirect:/create_user";
+        }
+        else {
+            userManager.users.add(user);
+            System.out.println("New user ID: " + user.id);
+            System.out.println("Number of users: " + userManager.users.size());
+            userManager.setCurrentUser(user.id);
+            System.out.println("Current user: " + userManager.getCurrentUser().getUserName());
+            // lägg till aktuella användaren och deras todolists 
+            model.addAttribute("currentUser", user); // lägger till aktuella användaren i modellen så den används i vyn 
+            model.addAttribute("userOwnedLists", user.getUserOwnedLists()); // lägger till den aktuella användarens todolist i modellen
+            return "redirect:/";
+        }
     }
 
     @PostMapping("/selectUser")
