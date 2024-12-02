@@ -18,16 +18,22 @@ public class TodoListController {
             model.addAttribute("errorMessage", "Ingen användare vald");
             System.out.println("Måste välja användare först");
         return "redirect:/";
+        }
+        if (todoListTitle.isEmpty()) {
+            System.out.println("Ingen titel på listan");
+            return "redirect:/";
+        }
+        else {
+            TodoList newTodoList = new TodoList(todoListTitle);
+            currentUser.addList(newTodoList);
+            System.out.println("Antal listor för denna användare: " + currentUser.userOwnedLists.size());
+    
+            // lägg till aktuella användaren och deras todolist i modellen
+            model.addAttribute("currnetUser", currentUser);
+            model.addAttribute("userOwnedLists", currentUser.getUserOwnedLists());
+    
+            return "redirect:/";
         } 
-        TodoList newTodoList = new TodoList(todoListTitle);
-        currentUser.addList(newTodoList);
-        System.out.println("Antal listor för denna användare: " + currentUser.userOwnedLists.size());
-
-        // lägg till aktuella användaren och deras todolist i modellen
-        model.addAttribute("currnetUser", currentUser);
-        model.addAttribute("userOwnedLists", currentUser.getUserOwnedLists());
-
-        return "redirect:/";
     }
 
 }
