@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TheTaskGroup2</title>
+    <link rel="stylesheet" href="list_style.css">
 
     <!-- Todo flytta till separat css fil -->
     <style>
@@ -45,32 +46,41 @@
     <!-- id="todoListTitle" name="todoListTitle" -->
 
     <form method="post" th:action="@{/addToDoList}">
-      <input type="text" id="todoListName" name="todoListTitle" >
+      <input type="text" id="todoListName" name="todoListTitle">
       <button>Lägg till ny lista</button>
     </form>
 
 
     <!-- Varje lista har nuu en "header", "body", och "footer" 
     för att förenkla CSS skapandet. Gör gärna inputsen till ett thymeleaf Form men annars
-    flytta inte saker ur div'sarna. 
+    flytta inte saker ur div'arna. 
     -->
     <div class="list-container">
-      <div class="list" th:each="todoList : ${userOwnedLists}">
+      <div class="list-card" th:each="todoList : ${userOwnedLists}">
         <header>
           <h3 th:text="${todoList.title}"></h3>
         </header>
         <div class="list-body">
           <!-- bara placeholders så länge -->
+           
           <ul>
-            <li>Test</li>
-            <li>Tasks</li>
-            <li>osv</li>
-            <li>:]</li>
+            <div class="task">
+              <input type="checkbox">
+              <span class="task-date">2023-10-01</span>
+              <span class="task-title">Test</span>
+            </div>
+            <div class="task">
+              <input type="checkbox">
+              <span class="task-date">2023-10-02</span>
+              <span class="task-title">Tasks</span>
+            </div>
           </ul>
         </div>
         <div class="list-footer">
-          <input type="text"> <br>
-          <input type="date">
+          <div class="inputs">
+            <input type="text" id="#task-title-input">
+            <input type="date" id="#task-deadline-input">
+          </div>
           <button>Lägg till Task</button>
         </div>
       </div>
