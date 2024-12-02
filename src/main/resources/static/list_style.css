@@ -1,0 +1,58 @@
+
+.list-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.5rem;
+    gap: 1rem;
+}
+
+.list-card {
+    background-color: #333;
+    border-radius: 10px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: black 0px 0px 8px 1px;
+    border: 2px solid black;
+}
+
+.list-card header {
+    text-align: center;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+    color: #fff;
+}
+
+.list-card header h3 {
+    margin: 0;
+}
+
+.list-body {
+    background: linear-gradient(45deg, rgb(255, 107, 107), rgb(85, 98, 112));
+    color: #fff;
+}
+
+/* Footer */
+.list-footer {
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.inputs input {
+    width: 80%;
+}
+
+#task-title-input {
+    margin-bottom: 2px;
+}
+
+.list-footer button {
+    background-color: #4CAF50;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    height: 100%;
+}
