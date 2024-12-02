@@ -50,13 +50,22 @@
     <div th:each="todoList : ${userOwnedLists}">
       <h3 th:text="${todoList.title}"></h3>
       <ul>
-        <li>Test</li>
-        <li>Tasks</li>
-        <li>osv</li>
-        <li>:]</li>
+        <li th:each="task : ${todoList.tasks}" th:text="${task.title}"></li>
       </ul>
-      <button>Lägg till Task</button>
-    </div>
+    
+
+    <!--
+    Kontrollera om todoList inte är null -->
+    <div th:if="${todoList != null}"></div>
+    <!--Formulär för att lägga till en ny task i default lista-->
+    <form method="post" th:action="@{/newTask}">
+      <input type="hidden" name="listId" th:value="${todoList.listId}">
+      <input type="text" name="title" placeholder="Ny task" required>
+      <button type="submit">Lägg till task</button>
+    </form>
+
+  </div>
+</div>
 
   </body>
 </html>
