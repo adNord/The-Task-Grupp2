@@ -15,7 +15,7 @@ public class Task {
     }
 
     public boolean isOverdue(){
-        return false;
+        return deadline.isBefore(LocalDate.now());
     }
 
     public void markComplete(){
@@ -29,4 +29,14 @@ public class Task {
     public String getTitleTask() {
         return titleTask;
     }
+
+    public LocalDate getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
+    }
+
+    
 }

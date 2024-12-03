@@ -1,5 +1,6 @@
 package com.TheTask.TheTask;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +16,24 @@ public class TaskController {
     private UserManager userManager;
     
     @PostMapping("/newTask")
-        public String newTask(@RequestParam String titleTask, @RequestParam UUID listId, org.springframework.ui.Model model){
+        public String newTask(@RequestParam String titleTask, @RequestParam UUID listId, String deadline, org.springframework.ui.Model model){
            // Hämta den aktuella användaren 
            User currentUser = userManager.getCurrentUser();
 
             //hitta listan med listId
             TodoList todoList = currentUser.getListById(listId);
 
+
             if (todoList != null) {
-                // Skapa en ny task och lägg till den i listan
-                Task newTask = new Task(titleTask, null);
-                todoList.addTask(newTask);
-            }
+        // Om deadline inte väljs skapas task utan deadline
+        LocalDate parsedDeadline = null;
+        if (deadline != null && !deadline.isEmpty()) {
+            parsedDeadline = LocalDate.parse(deadline);
+        }
+           
+            Task newTask = new Task(titleTask, parsedDeadline);
+            todoList.addTask(newTask);
+        }
             
             //lägg till aktuella användaren och deras listor i modellen
             model.addAttribute("currentUser", currentUser);
@@ -34,7 +41,7 @@ public class TaskController {
             return "redirect:/";
         }
 
-       
+    
 
         
 }
