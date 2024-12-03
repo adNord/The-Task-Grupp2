@@ -57,9 +57,10 @@
               <input type="checkbox">
               <div class="task-content">
                 <span th:text="${task.titleTask}" class="task-title">Test</span>
-                <span th:text= "${task.deadline}"
-                 
-                 class="task-date">2023-10-01</span>
+                
+                <span class="task-date"
+                 th:text= "${task.deadline}"
+                th:classappend="${task.isOverdue()} ? 'overdue' : ''"></span>
               </div>
             </div>
           </ul>

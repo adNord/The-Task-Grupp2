@@ -66,7 +66,7 @@
     margin-top: 5px;
 }
 
-.task-date-overdue {
+.task-date.overdue {
     font-size: 14px;
     color: rgb(196, 71, 71);
     font-style: italic;
