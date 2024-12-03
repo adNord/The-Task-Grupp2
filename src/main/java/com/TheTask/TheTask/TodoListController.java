@@ -19,11 +19,7 @@ public class TodoListController {
             System.out.println("Måste välja användare först");
         return "redirect:/";
         }
-        if (todoListTitle.isEmpty()) {
-            System.out.println("Ingen titel på listan");
-            return "redirect:/";
-        }
-        else {
+
             TodoList newTodoList = new TodoList(todoListTitle);
             currentUser.addList(newTodoList);
             System.out.println("Antal listor för denna användare: " + currentUser.userOwnedLists.size());
@@ -33,7 +29,7 @@ public class TodoListController {
             model.addAttribute("userOwnedLists", currentUser.getUserOwnedLists());
     
             return "redirect:/";
-        } 
+        
     }
 
 }
