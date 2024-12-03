@@ -65,20 +65,23 @@
            
           <ul>
             <!-- Exempel på hur en task kan se ut -->
-            <!-- <div class="task">
+            <div th:each="task : ${todoList.tasks}" class="task">
               <input type="checkbox">
               <span class="task-date">2023-10-01</span>
-              <span class="task-title">Test</span>
-            </div> -->
+              <span th:text="${task.titleTask}" class="task-title">Test</span>
+            </div>
           </ul>
         </div>
         <div class="list-footer">
           <!-- Behöver thymeleaf form för backend integration -->
+          <form method="post" th:action="@{/newTask}">
           <div class="inputs">
-            <input type="text" id="#task-title-input">
+            <input type="hidden" name="listId" th:value="${todoList.listId}">
+            <input type="text" name="titleTask" placeholder="Ny task" required id="#task-title-input">
             <input type="date" id="#task-deadline-input">
           </div>
           <button>Lägg till Task</button>
+          </form>
         </div>
       </div>
     </div>
