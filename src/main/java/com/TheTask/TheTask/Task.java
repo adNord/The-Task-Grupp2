@@ -3,13 +3,13 @@ package com.TheTask.TheTask;
 import java.time.LocalDate;
 
 public class Task {
-    private String title;
+    private String titleTask;
     private boolean completed;
     private LocalDate deadline;
 
     //constructor
-    public Task(String title, LocalDate deadline){
-        this.title = title;
+    public Task(String titleTask, LocalDate deadline){
+        this.titleTask = titleTask;
         this.deadline = deadline;
         this.completed = false;
     }
@@ -24,5 +24,9 @@ public class Task {
 
     public boolean isCompleted() {
         return completed;
+    }
+
+    public String getTitleTask() {
+        return titleTask;
     }
 }

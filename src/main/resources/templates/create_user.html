@@ -14,7 +14,7 @@
     <main>
         <div>
             <form method="post" th:action="@{/newUser}" th:object="${user}">
-                <input type="text" th:field="*{userName}">
+                <input type="text" th:field="*{userName}" required>
                 <button type="submit">Submit User</button>
             </form>
         </div>

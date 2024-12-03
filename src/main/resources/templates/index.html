@@ -53,34 +53,25 @@
           <!-- bara placeholders så länge -->
            
           <ul>
-            <!-- Exempel på hur en task kan se ut 
-            class-namnen måste finnas för att det ska se rätt ut -->
-            <!-- <div class="task">
+            <div th:each="task : ${todoList.tasks}" class="task">
               <input type="checkbox">
               <div class="task-content">
-                <span class="task-title">Inlämningsuppgift: The Task</span>
-                <span class="task-date">2024-12-06</span>
+                <span th:text="${task.titleTask}" class="task-title">Test</span>
+                <span class="task-date">2023-10-01</span>
               </div>
-            </div> -->
-            <!-- En försenad task -->
-            <!-- <div class="task">
-              <input type="checkbox">
-              <div class="task-content">
-                <span class="task-title">Inlämningsuppgift Hello_User</span>
-                <span class="task-date-overdue">2024-11-17 - Försenad</span>
-              </div>
-            </div> -->
+            </div>
           </ul>
         </div>
         <div class="list-footer">
           <!-- Behöver thymeleaf form för backend integration -->
-           <form action="">
-             <div class="inputs">
-               <input type="text" id="#task-title-input" placeholder="Task:">
-               <input type="date" id="#task-deadline-input">
-             </div>
-             <button>Lägg till Task</button>
-           </form>
+          <form method="post" th:action="@{/newTask}">
+          <div class="inputs">
+            <input type="hidden" name="listId" th:value="${todoList.listId}">
+            <input type="text" name="titleTask" placeholder="Ny task" required id="#task-title-input">
+            <input type="date" id="#task-deadline-input">
+          </div>
+          <button>Lägg till Task</button>
+          </form>
         </div>
       </div>
     </div>
