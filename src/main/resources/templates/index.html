@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TheTaskGroup2</title>
+    <link rel="stylesheet" href="list_style.css">
+
     <!-- Todo flytta till separat css fil -->
     <style>
       nav ul {
@@ -15,6 +17,7 @@
         display: inline-block;
       }
     </style>
+
   </head>
   <body>
     <header>
@@ -43,29 +46,45 @@
     <!-- id="todoListTitle" name="todoListTitle" -->
 
     <form method="post" th:action="@{/addToDoList}">
-      <input type="text" id="todoListName" name="todoListTitle" >
+      <input type="text" id="todoListName" name="todoListTitle" required>
       <button>Lägg till ny lista</button>
     </form>
 
-    <div th:each="todoList : ${userOwnedLists}">
-      <h3 th:text="${todoList.title}"></h3>
-      <ul>
-        <li th:each="task : ${todoList.tasks}" th:text="${task.titleTask}"></li>
-      </ul>
-    
 
-    <!--
-    Kontrollera om todoList inte är null -->
-    <div th:if="${todoList != null}"></div>
-    <!--Formulär för att lägga till en ny task i default lista-->
-    <form method="post" th:action="@{/newTask}">
-      <input type="hidden" name="listId" th:value="${todoList.listId}">
-      <input type="text" name="titleTask" placeholder="Ny task" required>
-      <button type="submit">Lägg till task</button>
-    </form>
-
-  </div>
-</div>
+    <!-- Varje lista har nuu en "header", "body", och "footer" 
+    för att förenkla CSS skapandet. Gör gärna inputsen till ett thymeleaf Form men annars
+    flytta inte saker ur div'arna. 
+    -->
+    <div class="list-container">
+      <div class="list-card" th:each="todoList : ${userOwnedLists}">
+        <header>
+          <h3 th:text="${todoList.title}"></h3>
+        </header>
+        <div class="list-body">
+          <!-- bara placeholders så länge -->
+           
+          <ul>
+            <!-- Exempel på hur en task kan se ut -->
+            <div th:each="task : ${todoList.tasks}" class="task">
+              <input type="checkbox">
+              <span class="task-date">2023-10-01</span>
+              <span th:text="${task.titleTask}" class="task-title">Test</span>
+            </div>
+          </ul>
+        </div>
+        <div class="list-footer">
+          <!-- Behöver thymeleaf form för backend integration -->
+          <form method="post" th:action="@{/newTask}">
+          <div class="inputs">
+            <input type="hidden" name="listId" th:value="${todoList.listId}">
+            <input type="text" name="titleTask" placeholder="Ny task" required id="#task-title-input">
+            <input type="date" id="#task-deadline-input">
+          </div>
+          <button>Lägg till Task</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
   </body>
 </html>
