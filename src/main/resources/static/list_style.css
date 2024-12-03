@@ -10,7 +10,7 @@
 .list-card {
     background-color: #333;
     border-radius: 10px;
-    width: 300px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     box-shadow: black 0px 0px 8px 1px;
@@ -38,6 +38,40 @@
 }
 
 /* task-div design */
+.task {
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.task-content {
+    margin-left: 10px;
+}
+
+.task-title {
+    font-size: 18px;
+}
+
+.task-date {
+    font-size: 14px;
+    color: gray;
+    font-style: italic;
+    display: block;
+    margin-top: 5px;
+}
+
+.task-date-overdue {
+    font-size: 14px;
+    color: rgb(196, 71, 71);
+    font-style: italic;
+    display: block;
+    margin-top: 5px;
+}
 
 /* list footer */
 .list-footer form {
