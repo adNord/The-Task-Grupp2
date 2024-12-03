@@ -1,22 +1,24 @@
-
+/* Generell list-design */
 .list-container {
     display: flex;
     flex-wrap: wrap;
     margin: 0.5rem;
     gap: 1rem;
+    font-family: 'Roboto', cursive;
 }
 
 .list-card {
     background-color: #333;
     border-radius: 10px;
-    width: 300px;
+    width: 350px;
     display: flex;
     flex-direction: column;
     box-shadow: black 0px 0px 8px 1px;
     border: 2px solid black;
 }
 
-.list-card header {
+/* List header */
+.list-card-header {
     text-align: center;
     top: 0;
     width: 100%;
@@ -24,17 +26,55 @@
     color: #fff;
 }
 
-.list-card header h3 {
+.list-card-header h3 {
     margin: 0;
 }
 
+/* list-body / task bakgrund */
+
 .list-body {
-    background: linear-gradient(45deg, rgb(255, 107, 107), rgb(85, 98, 112));
+    background: linear-gradient(90deg, #daaa83, rgb(85, 98, 112));
     color: #fff;
 }
 
-/* Footer */
-.list-footer {
+/* task-div design */
+.task {
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 10px 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+}
+
+.task-content {
+    margin-left: 10px;
+}
+
+.task-title {
+    font-size: 18px;
+}
+
+.task-date {
+    font-size: 14px;
+    color: gray;
+    font-style: italic;
+    display: block;
+    margin-top: 5px;
+}
+
+.task-date-overdue {
+    font-size: 14px;
+    color: rgb(196, 71, 71);
+    font-style: italic;
+    display: block;
+    margin-top: 5px;
+}
+
+/* list footer */
+.list-footer form {
     padding: 10px;
     display: flex;
     align-items: flex-start;
@@ -49,7 +89,7 @@
     margin-bottom: 2px;
 }
 
-.list-footer button {
+.list-footer form button {
     background-color: #4CAF50;
     border-radius: 5px;
     color: #fff;
