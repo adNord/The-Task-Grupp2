@@ -23,6 +23,7 @@ public class TaskTests {
         Task task = new Task("title", deadline);
         assertFalse(task.isOverdue());
         deadline = LocalDate.now().minusDays(1);
+        task.setDeadline(LocalDate.now().minusDays(1));
         assertTrue(task.isOverdue());
     }
 }
