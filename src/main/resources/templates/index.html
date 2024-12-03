@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="list_style.css">
     <link rel="stylesheet" href="header_style.css">
     <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Roboto&display=swap" rel="stylesheet">
-
+    <script src="https://kit.fontawesome.com/5cc5284a07.js" crossorigin="anonymous"></script>
   </head>
   <body>
     <header>
@@ -40,30 +40,27 @@
 
 
 
-    <!-- Varje lista har nuu en "header", "body", och "footer" 
-    för att förenkla CSS skapandet. Gör gärna inputsen till ett thymeleaf Form men annars
-    flytta inte saker ur div'arna. 
-    -->
+    <!-- Varje lista har en "header", "body", och "footer" för att förenkla CSS skapandet.-->
     <div class="list-container">
       <div class="list-card" th:each="todoList : ${userOwnedLists}">
         <div class="list-card-header">
           <h3 th:text="${todoList.title}"></h3>
         </div>
         <div class="list-body">
-          <!-- bara placeholders så länge -->
-           
           <ul>
+            <!-- Task div -->
             <div th:each="task : ${todoList.tasks}" class="task">
               <input type="checkbox">
               <div class="task-content">
                 <span th:text="${task.titleTask}" class="task-title">Test</span>
                 <span class="task-date">2023-10-01</span>
               </div>
+              <button><i class="fa-solid fa-trash"></i></button>
             </div>
           </ul>
         </div>
         <div class="list-footer">
-          <!-- Behöver thymeleaf form för backend integration -->
+          <!-- Skapa ny task formulär -->
           <form method="post" th:action="@{/newTask}">
           <div class="inputs">
             <input type="hidden" name="listId" th:value="${todoList.listId}">

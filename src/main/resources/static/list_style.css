@@ -73,6 +73,18 @@
     margin-top: 5px;
 }
 
+.task button {
+    background-color: rgb(255, 88, 88);
+    margin-left: auto;
+    border-radius: 3px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.task button:active {
+    background-color: rgb(255, 120, 120); /* Brighter color when pressed */
+}
+
 /* list footer */
 .list-footer form {
     padding: 10px;
