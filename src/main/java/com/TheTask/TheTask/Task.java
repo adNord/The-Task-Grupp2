@@ -29,4 +29,13 @@ public class Task {
     public String getTitleTask() {
         return titleTask;
     }
+
+    public LocalDate getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(LocalDate deadline) {
+        this.deadline = deadline;
+    }
+    
 }
