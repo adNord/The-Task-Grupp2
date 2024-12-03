@@ -18,13 +18,14 @@ public class TodoListTests {
         assertEquals(1, todoList.tasks.size());
     }
 
+    @Test
     public void removeTaskTest(){
         TodoList todoList = new TodoList("title");
         Task task = new Task("title", LocalDate.now());
         todoList.addTask(task);
         assertEquals(1, todoList.tasks.size());
 
-        todoList.removeTask("id");
+        todoList.removeTask(task.getTaskId());
         assertEquals(0, todoList.tasks.size());
     }
 }

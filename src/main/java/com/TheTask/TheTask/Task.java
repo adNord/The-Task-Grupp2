@@ -1,17 +1,20 @@
 package com.TheTask.TheTask;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 public class Task {
     private String titleTask;
     private boolean completed;
     private LocalDate deadline;
+    private UUID taskId;
 
     //constructor
     public Task(String titleTask, LocalDate deadline){
         this.titleTask = titleTask;
         this.deadline = deadline;
         this.completed = false;
+        this.taskId = UUID.randomUUID();
     }
 
     public boolean isOverdue(){
@@ -29,4 +32,10 @@ public class Task {
     public String getTitleTask() {
         return titleTask;
     }
+
+    public UUID getTaskId() {
+        return taskId;
+    }
+
+    
 }

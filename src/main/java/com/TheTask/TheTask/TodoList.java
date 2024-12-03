@@ -17,11 +17,20 @@ public class TodoList {
 
     public void addTask(Task task){
         tasks.add(task);
-        return;
     }
 
-    public void removeTask(String title){
-        return;
+    public void removeTask(UUID id){
+        tasks.removeIf(task -> task.getTaskId().equals(id));
+    }
+
+    // Metod för att hitta en lista baserat på ID
+    public Task getTaskById(UUID id) {
+        for (Task task: tasks) {
+            if (task.getTaskId().equals(id)) {
+                return task;
+            }
+        }
+        return null;
     }
 
     public String getTitle() {

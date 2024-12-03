@@ -55,7 +55,11 @@
                 <span th:text="${task.titleTask}" class="task-title">Test</span>
                 <span class="task-date">2023-10-01</span>
               </div>
-              <button><i class="fa-solid fa-trash"></i></button>
+              <form method="post" th:action="@{/removeTask}">
+                <input type="hidden" name="listId" th:value="${todoList.listId}">
+                <input type="hidden" name="taskId" th:value="${task.taskId}">
+                <button type="submit"><i class="fa-solid fa-trash"></i></button>
+              </form>
             </div>
           </ul>
         </div>
